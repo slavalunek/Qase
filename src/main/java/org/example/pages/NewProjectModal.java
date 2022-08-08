@@ -9,23 +9,27 @@ public class NewProjectModal {
 
     public NewProjectModal fillInNewProjectModal(Project project) {
 
-        if (project.getProjectName() != null){
+        if (project.getProjectName() != null) {
             new NewProjectPage().fillInProjectName(project.getProjectName());
         }
 
-        if (project.getDescription() != null){
+        if (project.getProjectCode() != null) {
+            new NewProjectPage().fillInProjectCode(project.getProjectCode());
+        }
+
+        if (project.getDescription() != null) {
             new NewProjectPage().fillInDescription(project.getDescription());
         }
         return this;
     }
 
-    public NewProjectModal clickOnPublicButton(){
+    public NewProjectModal clickOnPublicButton() {
         $x("//input[@id='public-access-type']").click();
         $x("//div[contains(@class,'hide')]").shouldBe();
         return this;
     }
 
-    public RepositoryPage clickOnCreateProjectButton(){
+    public RepositoryPage clickOnCreateProjectButton() {
         $x("//button[text()='Create project']").click();
         $x("//span[text()='Create new suite']").shouldBe(Condition.visible);
         return new RepositoryPage();

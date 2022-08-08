@@ -13,20 +13,21 @@ import static org.openqa.selenium.By.id;
 
 public class LoginPage {
 
-    public LoginPage open(){
+    public LoginPage open() {
         Selenide.open("/login");
         getWebDriver().manage().window().maximize();
+        $(id("btnLogin")).shouldBe(enabled);
         return this;
     }
 
-    public ProjectsPage login(String name, String password){
+    public ProjectsPage login(String name, String password) {
         $(id("inputEmail")).shouldBe(visible).sendKeys(name);
         $(id("inputPassword")).sendKeys(password);
         $(id("btnLogin")).click();
         return new ProjectsPage();
     }
 
-    public ProjectsPage loginStandardUser(){
+    public ProjectsPage loginStandardUser() {
         Properties properties = PropertiesLoader.loadProperties();
         new LoginPage().open()
                        .login(properties.getProperty("username"), properties.getProperty("password"));
