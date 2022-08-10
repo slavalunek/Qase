@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.openqa.selenium.By.id;
 
-public class LoginTest extends BaseTest {
+public class LoginTest {
 
     @Test
     public void loginValidUser() {
